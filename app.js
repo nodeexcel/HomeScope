@@ -115,6 +115,16 @@ app.get("/chart1", async (req, res) => {
   }
 });
 
+app.get("/chart2", async (req, res) => {
+  try {
+    const data = await connectToMindsDB();
+    res.json(data.data2);
+  } catch (error) {
+    console.error("Failed to fetch data for chart 2:", error);
+    res.json([]);
+  }
+});
+
 app.listen(3000 , () => {
   console.log("Server started on port 3000");
 });
